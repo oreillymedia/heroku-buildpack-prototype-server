@@ -157,6 +157,9 @@ p=$GOPATH/src/$name
 mkdir -p $p
 cp -R $build/* $p
 
+echo "  CUSTOM PART"
+gulp deploy:prepare
+
 # Default to $SOURCE_VERSION environment variable
 GO_LINKER_VALUE=${SOURCE_VERSION}
 
