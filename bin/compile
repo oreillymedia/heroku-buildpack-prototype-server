@@ -158,6 +158,9 @@ mkdir -p $p
 cp -R $build/* $p
 
 echo "  CUSTOM PART"
+cd $build
+echo "Installing npm packages"
+npm install
 gulp deploy:prepare
 
 # Default to $SOURCE_VERSION environment variable
