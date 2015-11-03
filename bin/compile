@@ -163,12 +163,6 @@ cd $build
 start "Installing npm packages"
   npm install
 finished
-start "Updating styleguide"
-  godep update github.com/oreillymedia/styleguide
-finished
-step "Compiling assets"
-  gulp deploy:prepare
-finished
 cd $buildpack
 # Default to $SOURCE_VERSION environment variable
 GO_LINKER_VALUE=${SOURCE_VERSION}
@@ -227,6 +221,14 @@ then
   esac
   FLAGS=(${FLAGS[@]} -ldflags "-X $xval")
 fi
+
+cd $build
+start "Updating styleguide"
+  godep update github.com/oreillymedia/styleguide
+finished
+step "Compiling assets"
+  gulp deploy:prepare
+finished
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
 cd $p
