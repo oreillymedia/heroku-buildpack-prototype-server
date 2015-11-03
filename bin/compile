@@ -224,7 +224,7 @@ fi
 
 cd $build
 start "Updating styleguide"
-  godep update github.com/oreillymedia/styleguide
+  # godep update github.com/oreillymedia/styleguide
 finished
 step "Compiling assets"
   gulp deploy:prepare
