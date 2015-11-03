@@ -153,23 +153,23 @@ then
     finished
 fi
 
+# Copy build files to build folder
 p=$GOPATH/src/$name
 mkdir -p $p
 cp -R $build/* $p
 
-echo "----------"
-pwd
-echo $build
-echo $buildpack
-echo $cache
-echo "----------"
 # echo "  CUSTOM PART"
-# cd $build
-# echo "Installing npm packages"
-# npm install
-# godep update github.com/oreillymedia/styleguide
-# gulp deploy:prepare
-
+cd $build
+start "Installing npm packages"
+  npm install
+finished
+start "Updating styleguide"
+  godep update github.com/oreillymedia/styleguide
+finished
+step "Compiling assets"
+  gulp deploy:prepare
+finished
+cd $buildpack
 # Default to $SOURCE_VERSION environment variable
 GO_LINKER_VALUE=${SOURCE_VERSION}
 
