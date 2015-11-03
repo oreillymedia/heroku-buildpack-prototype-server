@@ -159,8 +159,9 @@ cp -R $build/* $p
 
 echo "----------"
 pwd
-echo $(pwd)
-
+echo $build
+echo $buildpack
+echo $cache
 echo "----------"
 # echo "  CUSTOM PART"
 # cd $build
