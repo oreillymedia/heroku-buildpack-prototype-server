@@ -172,11 +172,13 @@ env_dir="$3"
 if [ -d "$env_dir" ]
 then
     ln -sfn $build /app/code
-  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT
+  # whitelist of ENV VARS to be passed on build. Added GIT_STYLEGUIDE GO_ENV so our gulptask can see them.
+  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT GIT_STYLEGUIDE GO_ENV
     do
         if [ -f "$env_dir/$key" ]
         then
             export "$key=$(cat "$env_dir/$key")"
+            echo "$key=$(cat "$env_dir/$key")"
         fi
     done
 fi
