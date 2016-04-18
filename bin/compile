@@ -225,8 +225,8 @@ fi
 
 cd $build
 step "Compiling assets"
-  echo  "running: BUILD=$build STYLEGUIDE_GIT=$build/$STYLEGUIDE_GIT gulp deploy:prepare"
-  BUILD=$build STYLEGUIDE_GIT=$build/$STYLEGUIDE_GIT gulp deploy:prepare
+  echo  "running: BUILD=$build gulp deploy:prepare"
+  BUILD=$build gulp deploy:prepare
 finished
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
