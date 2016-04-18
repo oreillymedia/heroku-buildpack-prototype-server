@@ -174,7 +174,7 @@ then
     ln -sfn $build /app/code
   # whitelist of ENV VARS to be passed on build. Added GIT_STYLEGUIDE GO_ENV so our gulptask can see them.
   echo "Setting up ENV VARS"
-  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT GIT_STYLEGUIDE GO_ENV
+  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT STYLEGUIDE_GIT GO_ENV
     do
         if [ -f "$env_dir/$key" ]
         then
@@ -228,8 +228,8 @@ fi
 cd $build
 step "Compiling assets"
   echo "Compiling assets..."
-  echo "GO_ENV=$GO_ENV GIT_STYLEGUIDE=$GIT_STYLEGUIDE"
-  GO_ENV=$GO_ENV GIT_STYLEGUIDE=$GIT_STYLEGUIDE BUILD=$build gulp deploy:prepare
+  echo "GO_ENV=$GO_ENV STYLEGUIDE_GIT=$STYLEGUIDE_GIT"
+  BUILD=$build gulp deploy:prepare
 finished
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
