@@ -226,7 +226,9 @@ fi
 
 cd $build
 step "Compiling assets"
-  GO_ENV=production BUILD=$build gulp deploy:prepare
+  echo "Compiling assets..."
+  echo "GO_ENV=$GO_ENV GIT_STYLEGUIDE=$GIT_STYLEGUIDE"
+  GO_ENV=$GO_ENV GIT_STYLEGUIDE=$GIT_STYLEGUIDE BUILD=$build gulp deploy:prepare
 finished
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
