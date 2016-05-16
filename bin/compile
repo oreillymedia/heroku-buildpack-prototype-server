@@ -173,7 +173,7 @@ if [ -d "$env_dir" ]
 then
     ln -sfn $build /app/code
   # whitelist of ENV VARS to be passed on build. Added GIT_STYLEGUIDE and GO_ENV so our gulptask can see them.
-  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT STYLEGUIDE_GIT GO_ENV
+  for key in CGO_CFLAGS CGO_CPPFLAGS CGO_CXXFLAGS CGO_LDFLAGS GO_LINKER_SYMBOL GO_LINKER_VALUE GO15VENDOREXPERIMENT STYLEGUIDE_GIT LANDER_GIT THEBE_GIT GO_ENV
     do
         if [ -f "$env_dir/$key" ]
         then
